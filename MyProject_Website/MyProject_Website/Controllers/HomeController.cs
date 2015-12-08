@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,19 +26,19 @@ namespace MyProject_Website.Controllers
 
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Calculator([Bind(Include = "Value")] TriangleCalculator Value)
+
+        
+        public ActionResult Calculator()
         {
-
-
-
-            if (ModelState.IsValid)
-            {
-                return View(TriangleCalculator.Calculate(Value.Value));
-            }
             return View();
            
+        }
+
+        public ActionResult CalculationResult(TriangleCalculator calc)
+        {
+            TriangleCalculator.Calculate(calc);
+
+            return PartialView("CalculationResult", calc);
         }
     }
 }
