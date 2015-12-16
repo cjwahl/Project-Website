@@ -1,15 +1,14 @@
 ﻿@model MyProject_Website.Models.TriangleCalculator
-@{ 
+@{
     ViewBag.Title = "Calculator Page";
 }
-
 
 @using (Ajax.BeginForm("CalculationResult", "Home", new AjaxOptions
     {
         InsertionMode = InsertionMode.Replace,
         UpdateTargetId = "result"
-}))
-{ 
+    }))
+{
     @Html.EditorFor(x => x.sideA)
     @Html.EditorFor(x => x.sideB)
     @Html.EditorFor(x => x.sideC)
@@ -19,8 +18,4 @@
     <input type="submit" value="Calculate" class="btn btn-default" />
 }
 
-
 @Html.Partial("CalculationResult")
-
-
-
