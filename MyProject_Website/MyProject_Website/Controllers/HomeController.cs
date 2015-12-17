@@ -30,6 +30,15 @@ namespace MyProject_Website.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Email(EmailInfo email)
+        {
+            email.name = Request["name"].ToString();
+            email.email = Request["email"].ToString();
+            email.message = Request["message"].ToString();
+            return View(email);
+        }
+
         public ActionResult Calculator()
         {
             return View();
