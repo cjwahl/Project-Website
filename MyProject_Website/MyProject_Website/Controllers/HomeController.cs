@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows.Forms;
 
 namespace MyProject_Website.Controllers
 {
@@ -15,27 +17,35 @@ namespace MyProject_Website.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult TextReminder(System.Web.Mvc.FormCollection formData)
+        {
+            Text.SetTimer();
+
+            if (formData["datetime"] != null)
+            {
+                var message = formData["message"];
+                var time = formData["datetime"];
+
+                InsertInfo.InsertText(message, time);
+            }
+            return View();
+        }
+
+        public ActionResult Library()
         {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Email(System.Web.Mvc.FormCollection formData)
         {
-            return View();
-        }
+            EmailInfo email = new EmailInfo();
 
-        public ActionResult Projects()
-        {
-            return View();
-        }
+            email.name = formData["name"];
+            email.message = formData["message"];
+            email.email = formData["email"];
 
-        [HttpPost]
-        public ActionResult Email(EmailInfo email)
-        {
-            email.name = Request["name"].ToString();
-            email.email = Request["email"].ToString();
-            email.message = Request["message"].ToString();
+            EmailInfo.SendEmail(email);
+
             return View(email);
         }
 

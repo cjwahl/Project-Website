@@ -2,20 +2,27 @@
 @{
     ViewBag.Title = "Calculator Page";
 }
+<section style="margin-left:30px; margin-right:30px;">
+    <div class="row">
+        <div class="col-md-5">
+            @using (Ajax.BeginForm("CalculationResult", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "result" }))
+            {
+                @Html.LabelFor(m => m.sideA)
+                <input class="text-box single-line" data-val="true" data-val-number="The field sideA must be a number." id="sideA" name="sideA" type="text" value="" />
+                @Html.LabelFor(m => m.sideB)
+                <input class="text-box single-line" data-val="true" data-val-number="The field sideA must be a number." id="sideB" name="sideB" type="text" value="" />
+                @Html.LabelFor(m => m.sideC)
+                <input class="text-box single-line" data-val="true" data-val-number="The field sideA must be a number." id="sideC" name="sideC" type="text" value="" />
+                @Html.LabelFor(m => m.angleA)
+                <input class="text-box single-line" data-val="true" data-val-number="The field sideA must be a number." id="angleA" name="angleA" type="text" value="" />
+                @Html.LabelFor(m => m.angleB)
+                <input class="text-box single-line" data-val="true" data-val-number="The field sideA must be a number." id="angleB" name="angleB" type="text" value="" />
+                @Html.LabelFor(m => m.angleC)
+                <input class="text-box single-line" data-val="true" data-val-number="The field sideA must be a number." id="angleC" name="angleC" type="text" value="" />
 
-@using (Ajax.BeginForm("CalculationResult", "Home", new AjaxOptions
-    {
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "result"
-    }))
-{
-    @Html.EditorFor(x => x.sideA)
-    @Html.EditorFor(x => x.sideB)
-    @Html.EditorFor(x => x.sideC)
-    @Html.EditorFor(x => x.angleA)
-    @Html.EditorFor(x => x.angleB)
-    @Html.EditorFor(x => x.angleC)
-    <input type="submit" value="Calculate" class="btn btn-default" />
-}
-
-@Html.Partial("CalculationResult")
+                <input type="submit" value="Calculate" class="btn btn-default" />
+            }
+        </div>
+    </div>
+    @Html.Partial("CalculationResult")
+</section>

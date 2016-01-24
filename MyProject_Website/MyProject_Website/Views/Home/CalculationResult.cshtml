@@ -1,12 +1,10 @@
 ﻿@model MyProject_Website.Models.TriangleCalculator
 
-@Scripts.Render("~/bundles/jqueryval")
-
-
-    <div id="result">Side A: @Html.DisplayFor(x => x.sideA)</div>
-    <div id="result">Side B: @Html.DisplayFor(x => x.sideB)</div>
-    <div id="result">Side C: @Html.DisplayFor(x => x.sideC)</div>
-    <div id="result">Angle A: @Html.DisplayFor(x => x.angleA)</div>
-    <div id="result">Angle B: @Html.DisplayFor(x => x.angleB)</div>
-    <div id="result">Angle C: @Html.DisplayFor(x => x.angleC)</div>
-
+<div id="result">
+    <div>Side A: <font color="green"> @Html.DisplayFor(x => x.sideA)</font></div>
+    <div>Side B: <font color="green"> @Html.DisplayFor(x => x.sideB)</font></div>
+    <div>Side C: <font color="green"> @Html.DisplayFor(x => x.sideC)</font></div>
+    <div>Angle A: <font color="green">  @Html.DisplayFor(x => x.angleA)°</font></div>
+    <div>Angle B: <font color="green">  @Html.DisplayFor(x => x.angleB)°</font></div>
+    <div>Angle C: <font color="green">  @Html.DisplayFor(x => x.angleC)°</font></div>
+</div>

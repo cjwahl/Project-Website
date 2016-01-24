@@ -1,0 +1,15 @@
+﻿@model MyProject_Website.Models.Text
+
+@{
+    ViewBag.Title = "Text Reminder";
+}
+<section style="margin-left:30px; margin-right:30px;">
+    @using (Html.BeginForm("TextReminder", "Home", FormMethod.Post))
+    {
+        <label>Date and time</label>
+        <input type="date" name="datetime" id="datetime" /><br />
+        <label>Reminder Message</label>
+        <input type="text" name="message" id="message" />
+        <input type="submit" value="Calculate" class="btn btn-default" />
+    }
+</section>

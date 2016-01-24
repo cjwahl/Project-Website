@@ -2,48 +2,22 @@
     ViewBag.Title = "Email";
 }
 @model MyProject_Website.Models.EmailInfo
-@{
 
-    Model.error = "";
-    var myEmail = "cwahl42@gmail.com";
-    var debuggingFlag = true;
-    try
-    {
-        // Initialize WebMail helper
-        WebMail.SmtpServer = "smtp.gmail.com";
-        WebMail.SmtpPort = 587;
-        WebMail.UserName = "cwahl42@gmail.com";
-        WebMail.Password = "";
-        WebMail.From = Model.email.ToString();
-
-        // Send email
-        WebMail.Send(to: myEmail.ToString(), subject: "Mail from " + Model.name.ToString(), body: Model.message.ToString());
-    }
-    catch (Exception ex)
-    {
-        Model.error = ex.Message;
-    }
-}
 <section class="message">
     <div class="container">
         <div class="row">
-            <p>Thank You, <b>@Html.DisplayFor(x => x.name)</b>.</p>
-            @if (Model.error.ToString() == "")
+            <p>Thank You, @Html.DisplayFor(x => x.name).</p>
+
+            @if (Model.error.ToString() == "No Error")
             {
                 <p>
-                    Your email has been sent!
+                    Your message has been sent!
                 </p>
-                <p><b>@Html.DisplayFor(x => x.message)</b></p>
             }
             else
             {
-                <p><b>The email was <em>not</em> sent.</b></p>
+                <p><b>Sorry there was a problem sending your message, Please try again later.</b></p>
 
-                if (debuggingFlag)
-                {
-                    <p>The following error was reported:</p>
-                    <p><em>@Html.DisplayFor(x => x.error)</em></p>
-                }
             }
         </div>
     </div>

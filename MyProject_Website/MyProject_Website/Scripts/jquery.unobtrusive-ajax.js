@@ -127,7 +127,7 @@
 
         $.ajax(options);
     }
-
+    
     function validate(form) {
         var validationInfo = $(form).data(data_validation);
         return !validationInfo || !validationInfo.validate || validationInfo.validate();
